@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth'
                 });
 
-                // Close mobile menu if open
                 const mainNav = document.getElementById('main-nav');
                 const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
                 if (mainNav && mainNav.classList.contains('active')) {
@@ -33,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Current year for copyright - supports multiple placeholders
+    // Current year
     document.querySelectorAll('#current-year').forEach(span => {
         span.textContent = new Date().getFullYear();
     });
 
-    // Lazy loading images (live)
+    // Lazy loading images
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -63,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Form validation (live)
+    // Form validation
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function (e) {
@@ -94,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Back to top button (live exact + enhanced with throttle)
+    // Back to top button
     let backToTopButton = document.querySelector('.back-to-top');
     if (!backToTopButton) {
         backToTopButton = document.createElement('button');
@@ -115,38 +114,14 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', throttle(toggleBackToTop, 100), { passive: true });
     toggleBackToTop();
 
-  // Current year
-  document.querySelectorAll('#current-year').forEach(el => el.textContent = new Date().getFullYear());
-
-  // Lazy load images with data-src
-  if ('IntersectionObserver' in window) {
-    const imgObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
-          if (img.dataset.srcset) { img.srcset = img.dataset.srcset; img.removeAttribute('data-srcset'); }
-          img.classList.add('loaded');
-          obs.unobserve(img);
-        }
-      });
-    }, {rootMargin: '80px 0px', threshold: 0.01});
-    document.querySelectorAll('img[data-src]').forEach(i => imgObserver.observe(i));
-  }
-
-  // Form validation
-  document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', function(e) {
-      if (!this.checkValidity()) {
-        e.preventDefault(); e.stopPropagation();
-        this.querySelectorAll('input, textarea, select').forEach(inp => { if (!inp.checkValidity()) inp.classList.add('invalid'); });
-        const firstInvalid = this.querySelector('.invalid');
-        if (firstInvalid) { firstInvalid.scrollIntoView({behavior:'smooth', block:'center'}); firstInvalid.focus(); }
-      }
-      this.classList.add('was-validated');
+    backToTopButton.addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 
-    // Add styles for back to top button (live exact style injection)
+    // Back to top styles (live exact)
     const style = document.createElement('style');
     style.textContent = `
         .back-to-top {
@@ -179,17 +154,24 @@ document.addEventListener('DOMContentLoaded', function () {
             transform: translateY(-3px);
         }
     `;
-    // Only inject if not already present (avoid duplicate)
     if (!document.getElementById('back-to-top-styles')) {
         style.id = 'back-to-top-styles';
         document.head.appendChild(style);
     }
 
-    // Initialize animations
+    // Init animations, swiper, FAQ
     initAnimations();
+    initTestimonialsSwiper();
+    initFAQAccordion();
+});
 
-    // Initialize Testimonials Swiper (live exact: spaceBetween 30, delay 5000)
-    if (document.querySelector('.testimonials-slider') && typeof Swiper !== 'undefined') {
+// Testimonials Swiper (live exact: spaceBetween 30, delay 5000)
+function initTestimonialsSwiper() {
+    const tryInit = () => {
+        const el = document.querySelector('.testimonials-slider');
+        if (!el) return false;
+        if (typeof Swiper === 'undefined') return false;
+        if (el.swiper) return true;
         new Swiper('.testimonials-slider', {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -203,25 +185,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 clickable: true,
             },
             breakpoints: {
-                640: {
-                    slidesPerView: 1,
-                },
-                768: {
-                    slidesPerView: 1,
-                },
-                1024: {
-                    slidesPerView: 1,
-                },
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 1 },
+                1024: { slidesPerView: 1 },
             }
         });
+        return true;
+    };
+    if (!tryInit()) {
+        let tries = 0;
+        const iv = setInterval(() => {
+            if (tryInit() || tries++ > 10) clearInterval(iv);
+        }, 400);
     }
+}
 
-    // FAQ Accordion Logic (live exact)
+// FAQ Accordion (live exact + a11y)
+function initFAQAccordion() {
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         if (!question) return;
-        // Accessibility
         const answer = item.querySelector('.faq-answer');
         if (answer && !answer.id) {
             answer.id = 'faq-answer-' + Math.random().toString(36).substr(2, 9);
@@ -254,32 +238,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-  });
+}
 
-  // Back-to-top button creation & behavior
-  let backBtn = document.querySelector('.back-to-top');
-  if (!backBtn) {
-    backBtn = document.createElement('button');
-    backBtn.className = 'back-to-top';
-    backBtn.setAttribute('aria-label','Back to top');
-    backBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    document.body.appendChild(backBtn);
-  }
-  const toggleBack = () => {
-    if (window.pageYOffset > 400) backBtn.classList.add('visible');
-    else backBtn.classList.remove('visible');
-  };
-  window.addEventListener('scroll', throttle(toggleBack, 100), {passive:true});
-  toggleBack();
-  backBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-
-  // Init animations, swiper, FAQ
-  initAnimations();
-  initTestimonialsSwiper();
-  initFAQAccordion();
-});
-
-// Animation function (live exact + improved threshold)
+// Animations
 function initAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -296,17 +257,8 @@ function initAnimations() {
     document.querySelectorAll('.animate-on-scroll, .service-card, .about-teaser-image, .testimonial-card, .resource-card').forEach(el => {
         observer.observe(el);
     });
-    return true;
-  };
-  if (!attempt()) {
-    let tries = 0;
-    const iv = setInterval(() => { if (attempt() || tries++ > 12) clearInterval(iv); }, 400);
-  }
-  const obs = new MutationObserver(() => { attempt(); });
-  obs.observe(document.body, {childList:true, subtree:true});
 }
 
-// Utility: debounce (live)
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -319,7 +271,6 @@ function debounce(func, wait) {
     };
 }
 
-// Utility: throttle (enhancement)
 function throttle(func, limit) {
     let inThrottle;
     return function () {
@@ -330,19 +281,5 @@ function throttle(func, limit) {
             inThrottle = true;
             setTimeout(() => inThrottle = false, limit);
         }
-      });
-      if (!wasActive) {
-        item.classList.add('active');
-        q.setAttribute('aria-expanded','true');
-      } else {
-        item.classList.remove('active');
-        q.setAttribute('aria-expanded','false');
-      }
     };
-
-    q.addEventListener('click', toggle);
-    q.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
-  });
 }
