@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Disclaimer - Hopeful Seasons Wellness</title>
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../assets/css/variables.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header"><div class="container"><h1>Medical Disclaimer</h1><p>Important information about our content and services</p></div></div>
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:800px; margin:0 auto; background:var(--white); padding:2.5rem; border-radius:var(--radius-xl); box-shadow:var(--shadow-sm);">
+                <h3>No Emergency Services</h3>
+                <p>This website does not provide emergency mental health services. If you are in crisis, experiencing suicidal thoughts, or in immediate danger, please contact: <strong>SADAG 0800 456 789, Suicide Crisis 0800 567 567, or Emergency 112</strong>.</p>
+                <h3>Informational Purposes Only</h3>
+                <p>Content on this site, including blog/resources, is for informational and educational purposes only and does not constitute medical, psychological, or psychiatric advice. It is not a substitute for professional consultation.</p>
+                <h3>No Therapeutic Relationship via Website</h3>
+                <p>Use of this website, contact forms, or resources does not create a psychologist-client relationship. A formal relationship begins only after an initial consultation and agreement.</p>
+                <h3>Professional Qualifications</h3>
+                <p>Thembelihle Hope Magubane is a registered Clinical Psychologist (HPCSA PS 014 5734) practicing within scope per HPCSA guidelines. Assessments and therapy are evidence-based but outcomes are not guaranteed.</p>
+                <h3>External Links</h3>
+                <p>We may link to external resources for convenience; we are not responsible for their content.</p>
+                <div style="margin-top:2rem; background:var(--secondary-bg); padding:1.25rem; border-radius:var(--radius-md);"><p style="margin:0; font-size:0.9rem;"><i class="fas fa-heart" style="color:var(--primary-color);"></i> If you need support, please <a href="/pages/contact.html" style="font-weight:600;">contact us</a> to book a professional session.</p></div>
+                <div style="margin-top:2rem;"><a href="/index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back Home</a></div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/navigation.js"></script><script src="/assets/js/main.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;}).catch(()=>{fetch('../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+    </script>
+</body>
+</html>

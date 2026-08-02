@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family Therapy - Hopeful Seasons Wellness</title>
+    <meta name="description" content="Family therapy for conflict, parenting, blended families in Johannesburg." />
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/css/variables.css" rel="stylesheet" />
+    <link href="../../assets/css/style.css" rel="stylesheet" />
+    <link href="../../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Family Therapy</h1>
+                <p>Strengthening the system that holds you</p>
+            </div>
+        </div>
+
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:960px; margin:0 auto;">
+                <div class="about-teaser-grid" style="gap:3rem; align-items:start;">
+                    <div>
+                        <img src="/assets/images/service-family.jpg" alt="Family Therapy" style="width:100%; border-radius:var(--radius-xl); box-shadow:var(--shadow-lg); aspect-ratio:4/3; object-fit:cover;" />
+                        <div style="margin-top:1.5rem; background:var(--secondary-bg); padding:1.25rem; border-radius:var(--radius-lg); border-left:3px solid var(--primary-color);">
+                            <h4 style="margin-bottom:0.5rem; font-size:1rem;"><i class="fas fa-users" style="color:var(--primary-color);"></i> Who Attends?</h4>
+                            <p style="margin:0; font-size:0.92rem;">Parents + children, siblings, extended family<br/>60-90 minutes<br/>Flexible configurations as needed<br/>Focus on relational dynamics</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Family is a Living System</h2>
+                        <p>When one member struggles, the whole family feels it. Family therapy views challenges not as individual faults, but as patterns within the system that can be understood and shifted together.</p>
+                        
+                        <h3 style="margin-top:2rem;">We Help Families With:</h3>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.7rem; margin-top:1rem;">
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Parent-child conflict and defiance</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Adolescent mood, anxiety, or behavioural issues</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Blended family and co-parenting challenges</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Sibling rivalry and family conflict</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Grief, divorce, relocation, or illness adjustments</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Communication and boundary setting</li>
+                        </ul>
+
+                        <h3 style="margin-top:2rem;">Our Systems-Based Approach</h3>
+                        <p>Drawing from family systems theory, we explore roles, rules, and communication patterns. Sessions are collaborative and strength-based – we build on what's already working while gently challenging unhelpful cycles.</p>
+
+                        <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="/pages/contact.html" class="btn btn-primary"><i class="fas fa-users"></i> Book Family Session</a>
+                            <a href="/pages/services/index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/navigation.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d; const y=document.getElementById('current-year'); if(y)y.textContent=new Date().getFullYear();}).catch(()=>{fetch('../../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+    </script>
+</body>
+</html>

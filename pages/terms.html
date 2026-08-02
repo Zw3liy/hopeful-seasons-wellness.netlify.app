@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service - Hopeful Seasons Wellness</title>
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../assets/css/variables.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header"><div class="container"><h1>Terms of Service</h1><p>Professional boundaries and practice policies</p></div></div>
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:800px; margin:0 auto; background:var(--white); padding:2.5rem; border-radius:var(--radius-xl); box-shadow:var(--shadow-sm);">
+                <h3>1. Agreement</h3>
+                <p>By booking a session at Hopeful Seasons Wellness, you agree to these terms, our Privacy Policy, and our cancellation policy.</p>
+                <h3>2. Sessions & Fees</h3>
+                <p>Fees are discussed prior to booking and are payable at/before session. Medical aid claims available via BHF. Fees subject to annual review.</p>
+                <h3>3. Cancellation Policy</h3>
+                <p>24 hours notice required. Late cancellations or no-shows are charged full fee.</p>
+                <h3>4. Professional Relationship</h3>
+                <p>Psychologist-client relationship is professional, not personal. No dual relationships per HPCSA ethics.</p>
+                <h3>5. Website Use</h3>
+                <p>Content is for information only, not medical advice. Do not use site for emergencies – contact SADAG 0800 456 789 or 112.</p>
+                <h3>6. Changes</h3>
+                <p>We may update terms; continued use after posting constitutes acceptance.</p>
+                <div style="margin-top:2rem;"><a href="/index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back Home</a> <a href="/pages/contact.html" class="btn btn-primary" style="margin-left:0.5rem;">Contact Us</a></div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/navigation.js"></script><script src="/assets/js/main.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;}).catch(()=>{fetch('../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+    </script>
+</body>
+</html>
