@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Individual Therapy - Hopeful Seasons Wellness</title>
+    <meta name="description" content="Individual therapy for anxiety, depression, trauma, grief at Hopeful Seasons Wellness, Johannesburg." />
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/css/variables.css" rel="stylesheet" />
+    <link href="../../assets/css/style.css" rel="stylesheet" />
+    <link href="../../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Individual Therapy</h1>
+                <p>A safe, confidential space to explore your inner world</p>
+            </div>
+        </div>
+
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:960px; margin:0 auto;">
+                <div class="about-teaser-grid" style="gap:3rem; align-items:start;">
+                    <div>
+                        <img src="/assets/images/service-individual.jpg" alt="Individual Therapy" style="width:100%; border-radius:var(--radius-xl); box-shadow:var(--shadow-lg); aspect-ratio:4/3; object-fit:cover;" />
+                        <img src="../../assets/images/service-individual.jpg" alt="" style="display:none" />
+                        <div style="margin-top:1.5rem; background:var(--secondary-bg); padding:1.25rem; border-radius:var(--radius-lg); border-left:3px solid var(--primary-color);">
+                            <h4 style="margin-bottom:0.5rem; font-size:1rem;"><i class="fas fa-clock" style="color:var(--primary-color);"></i> Session Details</h4>
+                            <p style="margin:0; font-size:0.92rem;">50-60 minutes<br/>Weekly or bi-weekly<br/>In-person in Johannesburg or secure online<br/>Medical aid accepted (BHF registered)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Your Journey, Your Pace</h2>
+                        <p>Individual therapy is a collaborative process where we explore thoughts, emotions, patterns, and experiences that shape your life. Whether you're facing overwhelming anxiety, persistent low mood, trauma, grief, or simply feeling stuck, therapy offers a space to be heard without judgment.</p>
+                        
+                        <h3 style="margin-top:2rem;">We Support With:</h3>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.7rem; margin-top:1rem;">
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Anxiety, panic, and chronic worry</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Depression, hopelessness, low motivation</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Trauma, PTSD, and childhood wounds</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Grief, loss, and bereavement</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Low self-esteem and self-criticism</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Life transitions, burnout, adjustment difficulties</li>
+                        </ul>
+
+                        <h3 style="margin-top:2rem;">Our Approach</h3>
+                        <p>We integrate <strong>client-centred, psychodynamic, and CBT</strong> frameworks. This means we honour your lived experience while gently exploring underlying patterns and equipping you with practical tools for daily life.</p>
+                        <blockquote style="margin:1.5rem 0; padding:1rem 1.25rem; background:rgba(239,228,226,0.5); border-left:3px solid var(--primary-color); border-radius:0 var(--radius-md) var(--radius-md) 0; font-style:italic; font-family:var(--font-heading); color:var(--primary-footer);">"Without rain, nothing grows. Learn to embrace the storms of your life."</blockquote>
+
+                        <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="/pages/contact.html" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Individual Session</a>
+                            <a href="/pages/services/index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+
+    <script src="/assets/js/navigation.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d; const y=document.getElementById('current-year'); if(y)y.textContent=new Date().getFullYear();}).catch(()=>{fetch('../../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+    </script>
+</body>
+</html>

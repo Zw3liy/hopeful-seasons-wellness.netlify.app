@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Couples Therapy - Hopeful Seasons Wellness</title>
+    <meta name="description" content="Couples therapy in Johannesburg to rebuild communication, trust, and intimacy." />
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../../assets/css/variables.css" rel="stylesheet" />
+    <link href="../../assets/css/style.css" rel="stylesheet" />
+    <link href="../../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Couples Therapy</h1>
+                <p>Rediscover connection, understanding, and love</p>
+            </div>
+        </div>
+
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:960px; margin:0 auto;">
+                <div class="about-teaser-grid" style="gap:3rem; align-items:start;">
+                    <div>
+                        <img src="/assets/images/service-couples.jpg" alt="Couples Therapy" style="width:100%; border-radius:var(--radius-xl); box-shadow:var(--shadow-lg); aspect-ratio:4/3; object-fit:cover;" />
+                        <div style="margin-top:1.5rem; background:var(--secondary-bg); padding:1.25rem; border-radius:var(--radius-lg); border-left:3px solid var(--primary-color);">
+                            <h4 style="margin-bottom:0.5rem; font-size:1rem;"><i class="fas fa-heart" style="color:var(--primary-color);"></i> What to Expect</h4>
+                            <p style="margin:0; font-size:0.92rem;">75-90 minute sessions<br/>Both partners present (occasional individual check-ins)<br/>Focus on patterns, not blame<br/>Practical tools for home</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Love is a Practice</h2>
+                        <p>Every relationship moves through seasons – some tender, some stormy. Couples therapy creates a neutral space where both partners feel heard, understood, and guided toward healthier interaction.</p>
+                        
+                        <h3 style="margin-top:2rem;">Common Reasons Couples Seek Support:</h3>
+                        <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.7rem; margin-top:1rem;">
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Constant arguing and feeling unheard</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Infidelity, betrayal, or trust rupture</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Emotional distance and disconnection</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Intimacy and affection challenges</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Parenting disagreements and family stress</li>
+                            <li><i class="fas fa-check-circle" style="color:var(--primary-color); margin-right:0.5rem;"></i> Pre-marital preparation and values alignment</li>
+                        </ul>
+
+                        <h3 style="margin-top:2rem;">How We Work</h3>
+                        <p>Using systems-based and attachment-informed approaches, we help you identify negative cycles, express needs safely, and practice new ways of connecting. You will leave each session with concrete practices – not just insight.</p>
+
+                        <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="/pages/contact.html" class="btn btn-primary"><i class="fas fa-heart"></i> Book Couples Session</a>
+                            <a href="/pages/services/index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> All Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/navigation.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d; const y=document.getElementById('current-year'); if(y)y.textContent=new Date().getFullYear();}).catch(()=>{fetch('../../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+    </script>
+</body>
+</html>

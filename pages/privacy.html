@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Hopeful Seasons Wellness</title>
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../assets/css/variables.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header"><div class="container"><h1>Privacy Policy</h1><p>POPIA Compliant – Your privacy matters deeply</p></div></div>
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:800px; margin:0 auto; background:var(--white); padding:2.5rem; border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); border:1px solid rgba(0,0,0,0.05);">
+                <p><strong>Last updated:</strong> January 2026</p>
+                <h3>1. Introduction</h3>
+                <p>Hopeful Seasons Wellness is committed to protecting your privacy in accordance with the Protection of Personal Information Act (POPIA) and HPCSA ethical guidelines.</p>
+                <h3>2. Information We Collect</h3>
+                <p>Contact details you provide via forms (name, email, phone, message), session notes (stored securely), and website analytics (anonymized).</p>
+                <h3>3. How We Use Your Information</h3>
+                <p>To respond to enquiries, schedule sessions, provide therapy, process medical aid claims (BHF), and improve our services. We never sell your data.</p>
+                <h3>4. Confidentiality</h3>
+                <p>All therapy content is confidential except where legally required (risk of harm, child protection, court order). We discuss limits of confidentiality in your first session.</p>
+                <h3>5. Data Security & Retention</h3>
+                <p>Records are stored encrypted, access-controlled, and retained per HPCSA requirements (minimum 6 years after last contact, or longer for minors). Supabase storage is secured.</p>
+                <h3>6. Your Rights</h3>
+                <p>You have the right to access, correct, or request deletion of your personal information, subject to legal and ethical obligations to maintain clinical records.</p>
+                <h3>7. Contact</h3>
+                <p>For privacy queries: <a href="mailto:info@hopefulseasons.co.za">info@hopefulseasons.co.za</a> or <a href="/pages/contact.html">Contact Page</a>.</p>
+                <div style="margin-top:2rem;"><a href="/index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back Home</a></div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/navigation.js"></script><script src="/assets/js/main.js"></script><script src="../assets/js/navigation.js"></script><script src="../assets/js/main.js"></script>
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;}).catch(()=>{fetch('../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+    </script>
+</body>
+</html>

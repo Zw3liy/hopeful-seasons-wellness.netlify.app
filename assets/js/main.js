@@ -1,40 +1,119 @@
-/**
- * Hopeful Seasons Wellness – Main.js
- * Component fetch logic, FAQ toggle, back-to-top, animations, Swiper init
- * Practitioner: Thembelihle Hope Magubane (Clinical Psychologist @ Hopeful Seasons Wellness)
- * Quotes:
- *  – "Without rain, nothing grows. Learn to embrace the storms of your life."
- *  – "Healing unfolds in the presence of another who can gently reflect what was once unseen."
- * Contact: Phone/WhatsApp 067 389 0946 | 60 6th Street Parkhurst, Randburg Johannesburg | Hours: In-person Saturdays 9am-2pm, Online Weekdays 4pm-6pm
- * Memberships: HPCSA (Health Professions Council of SA) & BHF (Board of Healthcare Funders)
- */
+// Main JavaScript - Hopeful Seasons Wellness
+// 1:1 replica of live + accessibility enhancements
+document.addEventListener('DOMContentLoaded', function () {
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Load dynamic components
-  loadComponents();
+    // Smooth scroll for anchor links (live exact)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = document.getElementById('site-header') ? document.getElementById('site-header').offsetHeight : 78;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const id = this.getAttribute('href');
-      if (id === '#') return;
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        const headerH = document.getElementById('site-header') ? document.getElementById('site-header').offsetHeight : 78;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 20;
-        window.scrollTo({top: top, behavior: 'smooth'});
-        // Close mobile nav
-        const mainNav = document.getElementById('main-nav');
-        const toggle = document.getElementById('mobile-menu-toggle');
-        if (mainNav && mainNav.classList.contains('active')) {
-          mainNav.classList.remove('active');
-          if (toggle) { toggle.classList.remove('active'); toggle.setAttribute('aria-expanded','false'); }
-          document.body.style.overflow = '';
-        }
-      }
+                // Close mobile menu if open
+                const mainNav = document.getElementById('main-nav');
+                const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+                if (mainNav && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    if (mobileMenuToggle) {
+                        mobileMenuToggle.classList.remove('active');
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                    document.body.style.overflow = '';
+                }
+            }
+        });
     });
-  });
+
+    // Current year for copyright - supports multiple placeholders
+    document.querySelectorAll('#current-year').forEach(span => {
+        span.textContent = new Date().getFullYear();
+    });
+
+    // Lazy loading images (live)
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '80px 0px', threshold: 0.01 });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // Form validation (live)
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            if (!this.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+                const inputs = this.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        input.classList.add('invalid');
+                    }
+                });
+                const firstInvalid = this.querySelector('.invalid');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstInvalid.focus();
+                }
+            }
+            this.classList.add('was-validated');
+        });
+
+        form.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function () {
+                if (this.classList.contains('invalid')) {
+                    this.classList.remove('invalid');
+                }
+            });
+        });
+    });
+
+    // Back to top button (live exact + enhanced with throttle)
+    let backToTopButton = document.querySelector('.back-to-top');
+    if (!backToTopButton) {
+        backToTopButton = document.createElement('button');
+        backToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        backToTopButton.className = 'back-to-top';
+        backToTopButton.setAttribute('aria-label', 'Back to top');
+        document.body.appendChild(backToTopButton);
+    }
+
+    const toggleBackToTop = () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    };
+
+    window.addEventListener('scroll', throttle(toggleBackToTop, 100), { passive: true });
+    toggleBackToTop();
 
   // Current year
   document.querySelectorAll('#current-year').forEach(el => el.textContent = new Date().getFullYear());
@@ -66,9 +145,114 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       this.classList.add('was-validated');
     });
-    form.querySelectorAll('input, textarea, select').forEach(inp => {
-      inp.addEventListener('input', function(){ if (this.classList.contains('invalid')) this.classList.remove('invalid'); });
-      inp.addEventListener('change', function(){ if (this.classList.contains('invalid') && this.checkValidity()) this.classList.remove('invalid'); });
+
+    // Add styles for back to top button (live exact style injection)
+    const style = document.createElement('style');
+    style.textContent = `
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+            z-index: var(--z-fixed);
+            box-shadow: var(--shadow-lg);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+    `;
+    // Only inject if not already present (avoid duplicate)
+    if (!document.getElementById('back-to-top-styles')) {
+        style.id = 'back-to-top-styles';
+        document.head.appendChild(style);
+    }
+
+    // Initialize animations
+    initAnimations();
+
+    // Initialize Testimonials Swiper (live exact: spaceBetween 30, delay 5000)
+    if (document.querySelector('.testimonials-slider') && typeof Swiper !== 'undefined') {
+        new Swiper('.testimonials-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 1,
+                },
+            }
+        });
+    }
+
+    // FAQ Accordion Logic (live exact)
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (!question) return;
+        // Accessibility
+        const answer = item.querySelector('.faq-answer');
+        if (answer && !answer.id) {
+            answer.id = 'faq-answer-' + Math.random().toString(36).substr(2, 9);
+        }
+        question.setAttribute('role', 'button');
+        question.setAttribute('tabindex', '0');
+        question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+        if (answer) question.setAttribute('aria-controls', answer.id);
+
+        const toggle = () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+                const oq = otherItem.querySelector('.faq-question');
+                if (oq) oq.setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+            } else {
+                question.setAttribute('aria-expanded', 'false');
+            }
+        };
+
+        question.addEventListener('click', toggle);
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggle();
+            }
+        });
     });
   });
 
@@ -95,85 +279,22 @@ document.addEventListener('DOMContentLoaded', function() {
   initFAQAccordion();
 });
 
-/* ================= COMPONENT FETCH LOGIC ================= */
-function loadComponents() {
-  const isSubPage = window.location.pathname.includes('/pages/');
-  const basePrefix = isSubPage ? '../' : '';
+// Animation function (live exact + improved threshold)
+function initAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
 
-  function fixPaths(html) {
-    if (!isSubPage) {
-      return html.replace(/\.\.\/assets/g, 'assets').replace(/href="\.\.\/index\.html"/g, 'href="index.html"');
-    } else {
-      return html
-        .replace(/href="index\.html"/g, 'href="../index.html"')
-        .replace(/href="assets\//g, 'href="../assets/')
-        .replace(/src="assets\//g, 'src="../assets/')
-        .replace(/href="pages\//g, 'href="')
-        .replace(/src="pages\//g, 'src="');
-    }
-  }
-
-  // Header
-  const headerPh = document.getElementById('header-placeholder');
-  if (headerPh) {
-    fetch(basePrefix + 'includes/header.html')
-      .then(r => { if (!r.ok) throw new Error('Header fetch failed'); return r.text(); })
-      .then(html => {
-        headerPh.innerHTML = fixPaths(html);
-        if (typeof initializeNavigation === 'function') initializeNavigation();
-      })
-      .catch(err => {
-        console.error('Header load error:', err);
-        headerPh.innerHTML = '<header class="site-header"><div class="container navbar-container"><a href="'+basePrefix+'index.html" class="logo-link"><img src="'+basePrefix+'assets/images/logo.jpg" class="site-logo" alt="Logo"/><div class="brand-text"><span class="brand-title">Hopeful Seasons Wellness</span><span class="brand-subtitle">Clinical Psychology Practice</span></div></a><button class="mobile-menu-toggle" id="mobile-menu-toggle"><span></span><span></span><span></span></button><nav class="main-nav" id="main-nav"><ul class="nav-list"><li class="nav-item"><a href="'+basePrefix+'index.html" class="nav-link active">Home</a></li><li class="nav-item"><a href="'+basePrefix+'pages/about.html" class="nav-link">About</a></li><li class="nav-item"><a href="'+basePrefix+'pages/services/index.html" class="nav-link">Services</a></li><li class="nav-item"><a href="'+basePrefix+'pages/contact.html" class="nav-link">Contact</a></li></ul><div class="nav-cta"><a href="'+basePrefix+'pages/contact.html" class="btn btn-primary btn-book">Book Now</a></div></nav></div></header>';
-        if (typeof initializeNavigation === 'function') initializeNavigation();
-      });
-  }
-
-  // Footer
-  const footerPh = document.getElementById('footer-placeholder');
-  if (footerPh) {
-    fetch(basePrefix + 'includes/footer.html')
-      .then(r => { if (!r.ok) throw new Error('Footer fetch failed'); return r.text(); })
-      .then(html => {
-        footerPh.innerHTML = fixPaths(html);
-        const y = document.getElementById('current-year');
-        if (y) y.textContent = new Date().getFullYear();
-      })
-      .catch(err => {
-        console.error('Footer load error:', err);
-        footerPh.innerHTML = '<footer class="site-footer"><div class="container"><div class="footer-bottom"><div class="footer-copy">© '+new Date().getFullYear()+' Hopeful Seasons Wellness – Thembelihle Hope Magubane | HPCSA & BHF | 067 389 0946 | 60 6th Street Parkhurst, Randburg Johannesburg</div></div></div></footer>';
-      });
-  }
-
-  // Services preview
-  const servicesGrid = document.querySelector('.services-grid');
-  if (servicesGrid) {
-    fetch(basePrefix + 'includes/services-preview.html')
-      .then(r => { if (!r.ok) throw new Error('Services fetch failed'); return r.text(); })
-      .then(html => {
-        servicesGrid.innerHTML = fixPaths(html);
-        if (typeof initAnimations === 'function') initAnimations();
-      })
-      .catch(err => console.error('Services load error:', err));
-  }
-}
-
-/* ================= TESTIMONIALS SWIPER ================= */
-function initTestimonialsSwiper() {
-  const attempt = () => {
-    const el = document.querySelector('.testimonials-slider');
-    if (!el) return false;
-    if (typeof Swiper === 'undefined') return false;
-    if (el.swiper) return true;
-    new Swiper('.testimonials-slider', {
-      slidesPerView: 1,
-      spaceBetween: 24,
-      loop: true,
-      grabCursor: true,
-      autoplay: { delay: 5500, disableOnInteraction: false, pauseOnMouseEnter: true },
-      pagination: { el: '.swiper-pagination', clickable: true },
-      keyboard: { enabled: true },
-      speed: 650
+    document.querySelectorAll('.animate-on-scroll, .service-card, .about-teaser-image, .testimonial-card, .resource-card').forEach(el => {
+        observer.observe(el);
     });
     return true;
   };
@@ -185,27 +306,29 @@ function initTestimonialsSwiper() {
   obs.observe(document.body, {childList:true, subtree:true});
 }
 
-/* ================= FAQ TOGGLE HANDLERS ================= */
-function initFAQAccordion() {
-  const items = document.querySelectorAll('.faq-item');
-  items.forEach(item => {
-    const q = item.querySelector('.faq-question');
-    const a = item.querySelector('.faq-answer');
-    if (!q) return;
-    if (a && !a.id) a.id = 'faq-answer-' + Math.random().toString(36).slice(2,9);
-    q.setAttribute('role','button');
-    q.setAttribute('tabindex','0');
-    q.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
-    if (a) q.setAttribute('aria-controls', a.id);
+// Utility: debounce (live)
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-    const toggle = () => {
-      const wasActive = item.classList.contains('active');
-      // Close others – single open FAQ as per live site behavior
-      document.querySelectorAll('.faq-item').forEach(other => {
-        if (other !== item) {
-          other.classList.remove('active');
-          const oq = other.querySelector('.faq-question');
-          if (oq) oq.setAttribute('aria-expanded','false');
+// Utility: throttle (enhancement)
+function throttle(func, limit) {
+    let inThrottle;
+    return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
         }
       });
       if (!wasActive) {
@@ -222,29 +345,4 @@ function initFAQAccordion() {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
     });
   });
-}
-
-/* ================= ANIMATION LISTENERS ================= */
-function initAnimations() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-      }
-    });
-  }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
-
-  document.querySelectorAll('.animate-on-scroll, .service-card, .about-teaser-image, .testimonial-card, .resource-card, .faq-item, .about-teaser-content').forEach(el => {
-    observer.observe(el);
-  });
-}
-
-/* Utils */
-function debounce(fn, wait){ let t; return function(...args){ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args),wait); }; }
-function throttle(fn, limit){
-  let inThrottle, lastArgs;
-  return function(...args){
-    if (!inThrottle){ fn.apply(this,args); inThrottle=true; setTimeout(()=>{ inThrottle=false; if (lastArgs){ fn.apply(this,lastArgs); lastArgs=null; } },limit); }
-    else lastArgs=args;
-  };
 }

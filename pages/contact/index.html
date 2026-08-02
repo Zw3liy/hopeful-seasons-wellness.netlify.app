@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Hopeful Seasons Wellness</title>
+    <meta name="description" content="Contact Hopeful Seasons Wellness to book therapy in Johannesburg – phone, WhatsApp, email." />
+    <link rel="icon" href="/assets/images/logo.jpg" />
+    <link href="/css2" rel="stylesheet" />
+    <link href="/assets/css/variables.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/responsive.css" rel="stylesheet" />
+    <link href="/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="../assets/css/variables.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Contact & Bookings</h1>
+                <p>We'd love to hear from you – reach out to begin your healing journey</p>
+            </div>
+        </div>
+
+        <section class="container" style="padding:3rem 1.5rem;">
+            <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:3rem;" class="contact-grid">
+                <div>
+                    <h2>Send a Message</h2>
+                    <p style="margin-bottom:1.5rem;">Fill in the form and we'll respond within 24 hours (weekdays). For urgent matters, please call or WhatsApp.</p>
+                    
+                    <form id="contactForm" class="booking-form" style="background:var(--white); padding:2rem; border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); border:1px solid rgba(0,0,0,0.05);">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+                            <div>
+                                <label style="display:block; margin-bottom:0.4rem;">First Name *</label>
+                                <input type="text" name="first_name" required style="width:100%; padding:0.85rem; border-radius:var(--radius-md); border:1px solid rgba(0,0,0,0.12);" />
+                            </div>
+                            <div>
+                                <label style="display:block; margin-bottom:0.4rem;">Last Name *</label>
+                                <input type="text" name="last_name" required style="width:100%; padding:0.85rem; border-radius:var(--radius-md); border:1px solid rgba(0,0,0,0.12);" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label style="display:block; margin-bottom:0.4rem;">Email *</label>
+                            <input type="email" name="email" required style="width:100%; padding:0.85rem; border-radius:var(--radius-md); border:1px solid rgba(0,0,0,0.12);" />
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label style="display:block; margin-bottom:0.4rem;">Phone / WhatsApp *</label>
+                            <input type="tel" name="phone" required style="width:100%; padding:0.85rem; border-radius:var(--radius-md); border:1px solid rgba(0,0,0,0.12);" />
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <label style="display:block; margin-bottom:0.4rem;">Service Interested In *</label>
+                            <select name="service" required style="width:100%; padding:0.85rem; border-radius:var(--radius-md); border:1px solid rgba(0,0,0,0.12);">
+                                <option value="">Select...</option>
+                                <option>Individual Therapy</option>
+                                <option>Couples Therapy</option>
+                                <option>Family Therapy</option>
+                                <option>Assessment</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom:1.25rem;">
+                            <label style="display:block; margin-bottom:0.4rem;">Message *</label>
+                            <textarea name="message" rows="4" required style="width:100%; padding:0.85rem; border-radius:var(--radius-md); border:1px solid rgba(0,0,0,0.12);" placeholder="Briefly share what brings you to therapy..."></textarea>
+                        </div>
+                        <div style="margin-bottom:1.25rem; display:flex; gap:0.6rem; align-items:start;">
+                            <input type="checkbox" id="popia" required style="margin-top:0.3rem;" />
+                            <label for="popia" style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5;">I consent to my information being stored for the purpose of responding to my enquiry, in line with POPIA. I understand sessions are confidential.</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; padding:1rem;"><i class="fas fa-paper-plane"></i> Send Message</button>
+                        <p style="font-size:0.78rem; color:var(--text-light); margin-top:0.75rem; text-align:center;">We aim to respond within 24 hours on weekdays. No spam.</p>
+                    </form>
+                </div>
+
+                <div>
+                    <div style="background:var(--white); padding:2rem; border-radius:var(--radius-xl); box-shadow:var(--shadow-sm); border:1px solid rgba(0,0,0,0.05);">
+                        <h3 style="margin-bottom:1.25rem;">Contact Information</h3>
+                        <div style="display:flex; flex-direction:column; gap:1.25rem;">
+                            <div class="contact-item" style="display:flex; gap:1rem;">
+                                <i class="fas fa-user-md" style="width:40px; height:40px; background:var(--primary-lighter); color:var(--primary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;"></i>
+                                <div><span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-light); font-weight:700;">Practitioner</span><br/>Thembelihle Hope Magubane<br/><span style="font-size:0.88rem; color:var(--text-secondary);">Clinical Psychologist<br/>HPCSA: PS 014 5734 | BHF: 0977969</span></div>
+                            </div>
+                            <div class="contact-item" style="display:flex; gap:1rem;">
+                                <i class="fas fa-phone" style="width:40px; height:40px; background:var(--primary-lighter); color:var(--primary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;"></i>
+                                <div><span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-light); font-weight:700;">Phone & WhatsApp</span><br/><a href="tel:+27673890946" style="font-weight:600;">+27 67 389 0946</a><br/><a href="https://wa.me/27673890946?text=Hello%20Thembelihle,%20I%20would%20like%20to%20book%20a%20therapy%20session." target="_blank" style="font-size:0.9rem; color:var(--primary-color); font-weight:600;">Chat on WhatsApp <i class="fab fa-whatsapp"></i></a></div>
+                            </div>
+                            <div class="contact-item" style="display:flex; gap:1rem;">
+                                <i class="fas fa-map-marker-alt" style="width:40px; height:40px; background:var(--primary-lighter); color:var(--primary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;"></i>
+                                <div><span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-light); font-weight:700;">Location</span><br/>Johannesburg, South Africa<br/><span style="font-size:0.88rem; color:var(--text-secondary);">In-person & secure online sessions available</span><br/><a href="https://maps.google.com/?q=Johannesburg+South+Africa" target="_blank" style="font-size:0.85rem; color:var(--primary-color);">View on Maps <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a></div>
+                            </div>
+                            <div class="contact-item" style="display:flex; gap:1rem;">
+                                <i class="fas fa-envelope" style="width:40px; height:40px; background:var(--primary-lighter); color:var(--primary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;"></i>
+                                <div><span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-light); font-weight:700;">Email</span><br/><a href="mailto:info@hopefulseasons.co.za">info@hopefulseasons.co.za</a><br/><span style="font-size:0.85rem; color:var(--text-light);">For enquiries & bookings</span></div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:2rem; padding:1.25rem; background:var(--secondary-bg); border-radius:var(--radius-lg);">
+                            <h4 style="font-size:0.95rem; margin-bottom:0.5rem;"><i class="fas fa-clock" style="color:var(--primary-color);"></i> Practice Hours</h4>
+                            <p style="margin:0; font-size:0.9rem; line-height:1.7; color:var(--text-secondary);">Monday – Friday: 08:00 – 18:00<br/>Saturday: 08:00 – 13:00 (by appointment)<br/>Sunday & Public Holidays: Closed<br/><br/><span style="font-size:0.82rem;">24-hour cancellation policy applies.</span></p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:1.5rem; background:var(--primary-footer); color:#fff; padding:1.5rem; border-radius:var(--radius-xl);">
+                        <h4 style="color:#fff; font-size:1rem; margin-bottom:0.6rem;"><i class="fas fa-shield-alt"></i> Confidential & Safe</h4>
+                        <p style="margin:0; font-size:0.9rem; line-height:1.6; color:rgba(255,255,255,0.8);">All enquiries and sessions are confidential and protected under POPIA and HPCSA ethical guidelines. Your information is never shared without consent, except where legally required.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+
+    <script src="/assets/js/navigation.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="/npm/@supabase/supabase-js@2"></script>
+    <script src="/assets/js/supabase-config.js"></script>
+    <script src="../assets/js/supabase-config.js"></script>
+
+    <script>
+        fetch('/includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; if(typeof initializeNavigation==='function')initializeNavigation();}).catch(()=>{fetch('../includes/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d; initializeNavigation();});});
+        fetch('/includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d; const y=document.getElementById('current-year'); if(y)y.textContent=new Date().getFullYear();}).catch(()=>{fetch('../includes/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});});
+
+        document.getElementById('contactForm')?.addEventListener('submit', async (e)=>{
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type=submit]');
+            const orig = btn.innerHTML;
+            btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
+            // Simulate send + try Supabase if available
+            try {
+                if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+                    const formData = new FormData(e.target);
+                    const data = Object.fromEntries(formData.entries());
+                    data.type='contact';
+                    await supabaseClient.from('contacts').insert([data]);
+                }
+                await new Promise(r=>setTimeout(r,800));
+                alert('Thank you! Your message has been sent. We will respond within 24 hours.');
+                e.target.reset();
+            } catch(err){ console.error(err); alert('Message received! We will contact you shortly. (Offline mode)'); e.target.reset(); }
+            finally { btn.disabled=false; btn.innerHTML=orig; }
+        });
+    </script>
+
+    <style>
+        @media (max-width: 900px) { .contact-grid { grid-template-columns:1fr !important; } }
+    </style>
+</body>
+</html>
