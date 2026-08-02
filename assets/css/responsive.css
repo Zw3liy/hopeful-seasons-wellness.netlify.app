@@ -1,148 +1,98 @@
-/* ==========================================================================
-   Mobile-First Responsive Stylesheet
-   ========================================================================== */
+/* =========================================================
+   Responsive – Mobile / Tablet breakpoints, drawer menu, fluid type
+   ========================================================= */
 
-/* Base Container & Media Rules */
-*, *::before, *::after {
-    box-sizing: border-box;
+/* Extra small: 320-479 */
+@media (max-width: 479px){
+  .container{padding:0 1.1rem}
+  .therapist-name{font-size:1.75rem !important}
+  .hero-content{padding:2rem 1.25rem 1.75rem !important;border-radius:1.5rem !important}
+  .hero-portrait{width:120px !important;height:120px !important}
+  .hero-buttons{flex-direction:column;width:100%}
+  .hero-buttons .btn{width:100%;justify-content:center}
+  .about-teaser-grid,.footer-grid,.resources-grid{grid-template-columns:1fr !important}
+  .services-grid{grid-template-columns:1fr !important}
+  .ribbon-content{flex-direction:column;gap:0.85rem !important;text-align:center}
+  .affiliations-list{justify-content:center;gap:1.25rem !important}
+  .cta-buttons{flex-direction:column;align-items:stretch}
+  .cta-buttons .btn{width:100%;justify-content:center}
 }
 
-img, svg, video {
-    max-width: 100%;
-    height: auto;
-    display: block;
+/* Small: 480-767 */
+@media (min-width:480px) and (max-width:767px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .resources-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
 }
 
-.container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+/* Tablet & below: ≤1023 – drawer rules */
+@media (max-width:1023px){
+  :root{--header-height:var(--header-height-mobile)}
+  .navbar-container{height:var(--header-height-mobile)}
+  .mobile-menu-toggle{display:flex !important}
+  .main-nav{position:fixed;top:var(--header-height-mobile);right:0;width:86%;max-width:360px;height:calc(100vh - var(--header-height-mobile));height:calc(100dvh - var(--header-height-mobile));background:rgba(255,255,255,0.98);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-left:1px solid rgba(0,0,0,0.06);box-shadow:var(--shadow-xl);flex-direction:column;align-items:stretch;justify-content:flex-start;padding:1.5rem 1.25rem 2rem;transform:translateX(102%);transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;z-index:var(--z-sticky)}
+  .main-nav.active{transform:translateX(0)}
+  .nav-list{flex-direction:column;align-items:stretch;gap:0.35rem;width:100%}
+  .nav-item{width:100%}
+  .nav-link{width:100%;padding:0.95rem 1.1rem;border-radius:var(--radius-lg);font-size:1rem;justify-content:space-between}
+  .nav-dropdown .dropdown-menu{position:static;transform:none !important;opacity:1;visibility:visible;pointer-events:auto;box-shadow:none;border:none;background:var(--secondary-bg);border-radius:var(--radius-md);margin-top:0.5rem;padding:0.35rem;display:none}
+  .nav-dropdown.open .dropdown-menu{display:block}
+  .nav-cta{margin-left:0;margin-top:1.25rem;width:100%}
+  .nav-cta .btn{width:100%;justify-content:center;padding:1rem}
+  .hero{min-height:72vh;padding:3rem 0 2.5rem}
+  .hero-content{max-width:92%;padding:2.25rem 1.75rem 2rem}
+  .about-teaser-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-teaser-image{order:-1}
+  .about-teaser-image img{max-width:380px}
+  .about-teaser-image::after{display:none}
+  .services-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.25rem}
+  .fab-container{bottom:18px;left:18px}
+  .back-to-top{bottom:18px;right:18px}
 }
 
-/* --------------------------------------------------------------------------
-   Extra Small Devices (Phones, 320px and up)
-   -------------------------------------------------------------------------- */
-@media (min-width: 320px) {
-    .container {
-        padding: 0 var(--spacing-md, 1rem);
-    }
-
-    .hero h1 {
-        font-size: var(--font-size-3xl, 1.875rem);
-        line-height: 1.25;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-md, 1rem);
-    }
-
-    .about-teaser-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl, 2rem);
-    }
-
-    .site-logo {
-        max-height: 50px;
-        width: auto;
-    }
+/* Medium: 768-1023 */
+@media (min-width:768px) and (max-width:1023px){
+  .container{padding:0 1.75rem}
+  .hero h1 .therapist-name{font-size:2rem}
+  .resources-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}
 }
 
-/* --------------------------------------------------------------------------
-   Small Devices (Landscape Phones, 576px and up)
-   -------------------------------------------------------------------------- */
-@media (min-width: 576px) {
-    .hero h1 {
-        font-size: var(--font-size-4xl, 2.25rem);
-    }
-
-    .hero-buttons {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: var(--spacing-lg, 1.5rem);
-    }
-
-    .site-logo {
-        max-height: 60px;
-    }
+/* Large: ≥1024 – fluid typography & grid */
+@media (min-width:1024px){
+  .services-grid{grid-template-columns:repeat(4,1fr)}
+  .mobile-menu-toggle{display:none !important}
+  .main-nav{transform:none !important}
+  h1{font-size:clamp(2.5rem, 4vw, 3rem)}
+  h2{font-size:clamp(1.9rem, 3vw, 2.25rem)}
 }
 
-/* --------------------------------------------------------------------------
-   Medium Devices (Tablets, 768px and up)
-   -------------------------------------------------------------------------- */
-@media (min-width: 768px) {
-    .container {
-        padding: 0 var(--spacing-xl, 2rem);
-    }
-
-    .hero h1 {
-        font-size: var(--font-size-5xl, 3rem);
-    }
-
-    .about-teaser-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .site-logo {
-        max-height: 70px;
-    }
+/* XL: ≥1200 */
+@media (min-width:1200px){
+  .container{max-width:var(--container-xl)}
+  .hero-content{max-width:680px}
 }
 
-/* --------------------------------------------------------------------------
-   Large Devices (Desktops, 1024px and up)
-   -------------------------------------------------------------------------- */
-@media (min-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+/* 2XL: ≥1536 */
+@media (min-width:1536px){
+  .container{max-width:var(--container-2xl)}
 }
 
-/* --------------------------------------------------------------------------
-   Extra Large Devices (Large Desktops, 1200px and up)
-   -------------------------------------------------------------------------- */
-@media (min-width: 1200px) {
-    .container {
-        max-width: var(--container-xl, 1200px);
-    }
+/* Height */
+@media (max-height:700px){
+  .hero{min-height:auto;padding:2.5rem 0}
 }
 
-/* --------------------------------------------------------------------------
-   2XL Devices (Ultra-wide Desktops, 1536px and up)
-   -------------------------------------------------------------------------- */
-@media (min-width: 1536px) {
-    .container {
-        max-width: var(--container-2xl, 1440px);
-    }
+/* Print */
+@media print{
+  .site-header,.hero-buttons,.cta-buttons,.modal,.service-link,.fab-container,.back-to-top,.affiliations-ribbon,.testimonials,.resources-teaser{display:none !important}
+  body{font-size:12pt;background:white !important;color:black !important}
+  .container{max-width:100%;padding:0}
+  .hero,.services-preview,.about-teaser,.faq-section,.cta-section,.site-footer{background:white !important;box-shadow:none !important;padding:1rem 0 !important}
+  .hero-content,.service-card,.testimonial-card,.faq-item{box-shadow:none !important;border:1px solid #ddd !important;break-inside:avoid}
 }
 
-/* --------------------------------------------------------------------------
-   Print Styles
-   -------------------------------------------------------------------------- */
-@media print {
-    .hero-buttons,
-    .cta-buttons,
-    .modal,
-    .service-link,
-    .floating-chat-btn,
-    .scroll-top-btn {
-        display: none !important;
-    }
-
-    body {
-        font-size: 12pt;
-        color: #000;
-        background: #fff;
-    }
-
-    .container {
-        max-width: 100%;
-        padding: 0;
-    }
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
 }
