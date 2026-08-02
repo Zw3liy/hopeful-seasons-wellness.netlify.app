@@ -1,7 +1,0 @@
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\office-1.jpg
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\office-2.jpg
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\office-space-1.jpg
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\office-space-2.jpg
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\therapist-portrait-1.jpg
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\therapist-portrait-3.jpg
-C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\images\therapist-seated.jpg

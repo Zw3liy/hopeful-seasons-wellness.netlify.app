@@ -1,41 +1,72 @@
-/* Mobile First Responsive Design */
+/* ==========================================================================
+   Mobile-First Responsive Stylesheet
+   ========================================================================== */
 
-/* Extra small devices (phones, 320px and up) */
+/* Base Container & Media Rules */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img, svg, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Extra Small Devices (Phones, 320px and up)
+   -------------------------------------------------------------------------- */
 @media (min-width: 320px) {
     .container {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-md, 1rem);
     }
 
     .hero h1 {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-3xl, 1.875rem);
+        line-height: 1.25;
     }
 
     .hero-buttons {
+        display: flex;
         flex-direction: column;
+        gap: var(--spacing-md, 1rem);
     }
 
     .about-teaser-grid {
+        display: grid;
         grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
+        gap: var(--spacing-xl, 2rem);
     }
 
     .site-logo {
         max-height: 50px;
+        width: auto;
     }
 }
 
-/* Small devices (landscape phones, 576px and up) */
+/* --------------------------------------------------------------------------
+   Small Devices (Landscape Phones, 576px and up)
+   -------------------------------------------------------------------------- */
 @media (min-width: 576px) {
     .hero h1 {
-        font-size: var(--font-size-4xl);
+        font-size: var(--font-size-4xl, 2.25rem);
     }
 
     .hero-buttons {
         flex-direction: row;
+        align-items: center;
     }
 
     .services-grid {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-lg, 1.5rem);
     }
 
     .site-logo {
@@ -43,18 +74,20 @@
     }
 }
 
-/* Medium devices (tablets, 768px and up) */
+/* --------------------------------------------------------------------------
+   Medium Devices (Tablets, 768px and up)
+   -------------------------------------------------------------------------- */
 @media (min-width: 768px) {
     .container {
-        padding: 0 var(--spacing-xl);
+        padding: 0 var(--spacing-xl, 2rem);
     }
 
     .hero h1 {
-        font-size: var(--font-size-5xl);
+        font-size: var(--font-size-5xl, 3rem);
     }
 
     .about-teaser-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .site-logo {
@@ -62,42 +95,54 @@
     }
 }
 
-/* Large devices (desktops, 1024px and up) */
+/* --------------------------------------------------------------------------
+   Large Devices (Desktops, 1024px and up)
+   -------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
     .services-grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
+/* --------------------------------------------------------------------------
+   Extra Large Devices (Large Desktops, 1200px and up)
+   -------------------------------------------------------------------------- */
 @media (min-width: 1200px) {
     .container {
-        max-width: var(--container-xl);
+        max-width: var(--container-xl, 1200px);
     }
 }
 
-/* 2XL devices (larger desktops, 1536px and up) */
+/* --------------------------------------------------------------------------
+   2XL Devices (Ultra-wide Desktops, 1536px and up)
+   -------------------------------------------------------------------------- */
 @media (min-width: 1536px) {
     .container {
-        max-width: var(--container-2xl);
+        max-width: var(--container-2xl, 1440px);
     }
 }
 
-/* Print styles */
+/* --------------------------------------------------------------------------
+   Print Styles
+   -------------------------------------------------------------------------- */
 @media print {
-
     .hero-buttons,
     .cta-buttons,
     .modal,
-    .service-link {
+    .service-link,
+    .floating-chat-btn,
+    .scroll-top-btn {
         display: none !important;
     }
 
     body {
         font-size: 12pt;
+        color: #000;
+        background: #fff;
     }
 
     .container {
         max-width: 100%;
+        padding: 0;
     }
 }

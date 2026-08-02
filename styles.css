@@ -1,0 +1,52 @@
+/* Base Reset & Layout Fixes */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Structural Containment */
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 2rem 1rem;
+}
+
+/* Component Overrides & Media Rules */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
