@@ -1,0 +1,29 @@
+{
+  "name": "Hopeful Seasons Wellness",
+  "short_name": "Hopeful Seasons",
+  "description": "Professional therapy services in Johannesburg - Clinical Psychologist Thembelihle Hope Magubane. Individual, couples, family therapy, assessments.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EFE4E2",
+  "theme_color": "#8C927D",
+  "icons": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/assets/images/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["health", "medical", "psychology"],
+  "lang": "en-ZA",
+  "orientation": "portrait-primary"
+}
