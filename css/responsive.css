@@ -1,0 +1,22 @@
+@import url("style.css");
+
+@media(max-width:768px){
+
+    section {
+        padding:50px 0;
+    }
+
+    h1 {
+        font-size:2rem;
+    }
+
+    .container {
+        width:92%;
+    }
+
+    .btn {
+        width:100%;
+        text-align:center;
+    }
+
+}
