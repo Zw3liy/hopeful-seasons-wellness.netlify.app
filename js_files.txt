@@ -1,0 +1,5 @@
+C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\js\booking.js
+C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\js\main.js
+C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\js\navigation.js
+C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\assets\js\supabase-config.js
+C:\Users\HP\OneDrive\Desktop\CoAgent\cloned_sites\hopeful-seasons-wellness.netlify.app\npm\swiper@11\swiper-bundle.min.js

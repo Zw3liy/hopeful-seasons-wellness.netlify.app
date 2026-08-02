@@ -1,0 +1,55 @@
+Folder PATH listing
+Volume serial number is 8895-632D
+C:.
+¦   css2
+¦   css_files.txt
+¦   files.txt
+¦   file_inventory.txt
+¦   html_files.txt
+¦   index.html
+¦   jpg_files.txt
+¦   js_files.txt
+¦   png_files.txt
+¦   project_tree.txt
+¦   svg_files.txtif
+¦   tracked_files.txt
+¦   
++---ajax
+¦   +---libs
+¦       +---font-awesome
+¦           +---6.4.0
+¦               +---css
+¦                       all.min.css
+¦                       
++---assets
+¦   +---css
+¦   ¦       responsive.css
+¦   ¦       style.css
+¦   ¦       variables.css
+¦   ¦       
+¦   +---images
+¦   ¦       office-1.jpg
+¦   ¦       office-2.jpg
+¦   ¦       office-space-1.jpg
+¦   ¦       office-space-2.jpg
+¦   ¦       therapist-portrait-1.jpg
+¦   ¦       therapist-portrait-3.jpg
+¦   ¦       therapist-seated.jpg
+¦   ¦       
+¦   +---js
+¦           booking.js
+¦           main.js
+¦           navigation.js
+¦           supabase-config.js
+¦           
++---npm
+¦   +---@supabase
+¦   ¦       supabase-js@2
+¦   ¦       
+¦   +---swiper@11
+¦           swiper-bundle.min.css
+¦           swiper-bundle.min.js
+¦           
++---pages
+        about.html
+        
