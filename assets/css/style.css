@@ -66,12 +66,6 @@ a {
 a:hover {
     color: var(--primary-dark);
 }
-.site-logo {
-    max-height: 80px;
-    width: auto;
-    object-fit: contain;
-    transition: all var(--transition-normal);
-}
 .container {
     width: 100%;
     max-width: var(--container-xl);
@@ -91,6 +85,8 @@ a:hover {
     transition: all var(--transition-normal);
     border: 2px solid transparent;
     gap: var(--spacing-sm);
+    position: relative;
+    overflow: hidden;
 }
 .btn-primary {
     background-color: var(--primary-color);
@@ -268,10 +264,6 @@ a:hover {
 .animate-in {
     opacity: 1 !important;
     animation: fadeInUp 0.8s ease-out forwards;
-}
-.btn {
-    position: relative;
-    overflow: hidden;
 }
 .btn::after {
     content: '';
